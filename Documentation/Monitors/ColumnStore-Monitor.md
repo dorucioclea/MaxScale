@@ -5,6 +5,9 @@ servers. It supports multiple UM nodes and can detect the correct server for
 DML/DDL statements which will be labeled as the master. Other UM nodes will be
 used for reads.
 
+**NOTE** Currently the admin port for 1.5 must explicitly be set. Please
+see [admin_port](#admin_port).
+
 ## Required Grants
 
 The credentials defined with the `user` and `password` parameters must have all
@@ -58,12 +61,20 @@ This optional parameter specifies the port of the Columnstore administrative
 daemon. The default value is `8630`. Note that the daemons of all nodes must
 be listening on the same port.
 
+**NOTE** The default value is currently wrong and must explicitly
+be set to `8640`.
+```
+[CsMonitor]
+...
+admin_port=8640
+```
+
 ### `admin_base_path`
 
 Allowed only when the value of version is `1.5`.
 
 This optional parameter specifies the base path of the Columnstore
-administrative daemon. The default value is `/cmapi/0.3.0`.
+administrative daemon. The default value is `/cmapi/0.4.0`.
 
 ### `api_key`
 
